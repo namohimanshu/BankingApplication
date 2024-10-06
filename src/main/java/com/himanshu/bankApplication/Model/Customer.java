@@ -1,10 +1,8 @@
 package com.himanshu.bankApplication.Model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @AllArgsConstructor
@@ -21,6 +19,7 @@ public class Customer {
 	private String gender;
 
 	private final long account_num;
+	@ManyToOne
 	private Address address;
 
 

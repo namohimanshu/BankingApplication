@@ -1,6 +1,9 @@
 package com.himanshu.bankApplication.Model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 
 @Entity
@@ -10,6 +13,9 @@ import lombok.*;
 @Setter
 @ToString
 public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long addressId;
     private String city;
     private long pincode;
     private String landmark;
@@ -26,7 +32,7 @@ public class Address {
         this.country = country;
     }
  **/
-
+/**
     public String getCity() {
         return city;
     }
@@ -86,4 +92,5 @@ public class Address {
                 ", country='" + country + '\'' +
                 '}';
     }
+    */
 }
