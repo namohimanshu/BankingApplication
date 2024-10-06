@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ManyToAny;
 
+import java.util.List;
+
 @Entity
 @AllArgsConstructor
 @Getter
@@ -14,13 +16,14 @@ import org.hibernate.annotations.ManyToAny;
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String customer_id;
+	private long customerId;
 	private String name;
 	private String gender;
 
 	private final long account_num;
-	@ManyToOne
-	private Address address;
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+	@JoinColumn(name = "customer_id",referencedColumnName = "customerId")
+	private List<Address> address;
 
 
 //	public Customer(String customer_id, String name, String gender, long account_num, Address address) {
