@@ -1,5 +1,14 @@
 package com.himanshu.bankApplication.Model;
 
+import jakarta.persistence.Entity;
+import lombok.*;
+
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Address {
     private String city;
     private long pincode;
@@ -7,7 +16,7 @@ public class Address {
     private String district;
     private String state;
     private String country;
-
+/**
     public Address(String city, long pincode, String landmark, String district, String state, String country) {
         this.city = city;
         this.pincode = pincode;
@@ -16,6 +25,7 @@ public class Address {
         this.state = state;
         this.country = country;
     }
+ **/
 
     public String getCity() {
         return city;
