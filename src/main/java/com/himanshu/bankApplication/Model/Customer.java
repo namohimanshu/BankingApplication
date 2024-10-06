@@ -1,16 +1,12 @@
 package com.himanshu.bankApplication.Model;
 
 import jakarta.persistence.*;
-import lombok.*;
-import org.hibernate.annotations.ManyToAny;
 
 import java.util.List;
 
 @Entity
-@AllArgsConstructor
-@Getter
-@Setter
-@ToString
+
+
 
 
 public class Customer {
@@ -20,51 +16,79 @@ public class Customer {
 	private String name;
 	private String gender;
 
-	private final long account_num;
+	private final long account_num ;
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id",referencedColumnName = "customerId")
 	private List<Address> address;
 
 
-//	public Customer(String customer_id, String name, String gender, long account_num, Address address) {
-//		this.customer_id = customer_id;
-//		this.name = name;
-//		this.gender = gender;
+	// Default constructor required by JPA
+	protected Customer() {
+	this.account_num=getAccount_num();
+
+	}
+
+	// Constructor for setting account_num (since it's final)
+//	public Customer(long account_num) {
 //		this.account_num = account_num;
-//		this.address = address;
 //	}
-//	public String getName() {
-//		return name;
-//	}
-//	public void setName(String name) {
-//		this.name = name;
-//	}
-//	public String getGender() {
-//		return gender;
-//	}
-//	public void setGender(String gender) {
-//		this.gender = gender;
-//	}
-//	public Address getAddress() {
-//		return address;
-//	}
-//	public void setAddress(Address address) {
-//		this.address = address;
-//	}
-//	public long getAccount_num() {
-//		return Account_num;
-//	}
-//
-////	public long setAccount_num(long acc_num) {
-////		this.Account_num=acc_num;
-////	}
-//	@Override
-//	public String toString() {
-//		return "Customer [name=" + name + ", gender=" + gender + ", Account_num=" + Account_num + ", address=" + address
-//				+ "]";
-//	}
-//
-//
+
+	public Customer(long customerId, String name, String gender, long account_num, List<Address> address) {
+		this.customerId = customerId;
+		this.name = name;
+		this.gender = gender;
+		this.account_num = account_num;
+		this.address = address;
+	}
+
+	public long getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(long customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public long getAccount_num() {
+		return account_num;
+	}
+
+	public List<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"customerId=" + customerId +
+				", name='" + name + '\'' +
+				", gender='" + gender + '\'' +
+				", account_num=" + account_num +
+				", address=" + address +
+				'}';
+	}
 }
 
 

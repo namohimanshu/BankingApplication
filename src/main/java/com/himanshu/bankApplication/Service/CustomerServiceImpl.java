@@ -24,4 +24,10 @@ public class CustomerServiceImpl implements CustomerService{
        Customer customer1=customerRepo.save(customer);
        return customer1;
     }
+
+    @Override
+    public Customer getCustomerByAccountNum(long Account_num) {
+      //  Customer customer =customerRepo.findByaccount_num;
+        return null;
+    }
 }

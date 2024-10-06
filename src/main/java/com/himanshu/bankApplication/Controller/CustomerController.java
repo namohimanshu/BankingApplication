@@ -29,7 +29,7 @@ private CustomerService customerService;
         Customer customer1=customerService.addCustomer(customer);
         return new ResponseEntity<Customer>(customer1,HttpStatus.CREATED);
     }
-    
+
 
 
 }
