@@ -9,7 +9,7 @@ public class Customer {
 		super();
 		this.name = name;
 		this.gender = gender;
-		Account_num = account_num;
+		this.Account_num = account_num;
 		this.address = address;
 	}
 	public String getName() {
@@ -34,9 +34,9 @@ public class Customer {
 		return Account_num;
 	}
 	
-	public long setAccount_num(long acc_num) {
-		this.
-	}
+//	public long setAccount_num(long acc_num) {
+//		this.Account_num=acc_num;
+//	}
 	@Override
 	public String toString() {
 		return "Customer [name=" + name + ", gender=" + gender + ", Account_num=" + Account_num + ", address=" + address
