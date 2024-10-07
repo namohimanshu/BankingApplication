@@ -5,10 +5,6 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-
-
-
-
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +12,7 @@ public class Customer {
 	private String name;
 	private String gender;
 
-	private final long account_num ;
+	private final long accountNum;
 	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
 	@JoinColumn(name = "customer_id",referencedColumnName = "customerId")
 	private List<Address> address;
@@ -24,7 +20,7 @@ public class Customer {
 
 	// Default constructor required by JPA
 	protected Customer() {
-	this.account_num=getAccount_num();
+	this.accountNum = getAccountNum();
 
 	}
 
@@ -33,11 +29,11 @@ public class Customer {
 //		this.account_num = account_num;
 //	}
 
-	public Customer(long customerId, String name, String gender, long account_num, List<Address> address) {
+	public Customer(long customerId, String name, String gender, long accountNum, List<Address> address) {
 		this.customerId = customerId;
 		this.name = name;
 		this.gender = gender;
-		this.account_num = account_num;
+		this.accountNum = accountNum;
 		this.address = address;
 	}
 
@@ -65,8 +61,8 @@ public class Customer {
 		this.gender = gender;
 	}
 
-	public long getAccount_num() {
-		return account_num;
+	public long getAccountNum() {
+		return accountNum;
 	}
 
 	public List<Address> getAddress() {
@@ -85,7 +81,7 @@ public class Customer {
 				"customerId=" + customerId +
 				", name='" + name + '\'' +
 				", gender='" + gender + '\'' +
-				", account_num=" + account_num +
+				", account_num=" + accountNum +
 				", address=" + address +
 				'}';
 	}

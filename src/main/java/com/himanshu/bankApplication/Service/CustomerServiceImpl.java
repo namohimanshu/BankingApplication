@@ -27,8 +27,8 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Customer getCustomerByAccountNum(long Account_num) {
-      //  Customer customer =customerRepo.findByaccount_num;
-        return null;
+        Customer customer =customerRepo.findByAccountNum(Account_num);
+        return customer;
     }
 
     @Override
