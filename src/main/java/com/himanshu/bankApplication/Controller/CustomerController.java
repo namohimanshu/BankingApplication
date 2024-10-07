@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.w3c.dom.ls.LSInput;
 
 import java.util.List;
 
@@ -34,7 +35,11 @@ private CustomerService customerService;
         Customer customer=customerService.getCustomerByAccountNum(account_num);
         return new ResponseEntity<Customer>(customer,HttpStatus.ACCEPTED);
     }
-
+    @GetMapping("/{name}")
+    public ResponseEntity<List<Customer>> getCustomerByName (@PathVariable String name){
+        List<Customer> customers=customerService.getByName(name);
+        return new ResponseEntity<List<Customer>>(customers,HttpStatus.ACCEPTED);
+    }
 
 
 }
