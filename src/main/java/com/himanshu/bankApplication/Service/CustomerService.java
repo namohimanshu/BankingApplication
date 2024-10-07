@@ -10,6 +10,7 @@ public interface CustomerService {
 
     public List<Customer> getAllCustomer();
     public  Customer addCustomer(Customer customer);
+    //
     public Customer getCustomerByAccountNum (long Account_num);
 
 }
