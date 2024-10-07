@@ -13,6 +13,6 @@ public interface CustomerService {
     public  Customer addCustomer(Customer customer);
     //
     public Customer getCustomerByAccountNum (long Account_num);
-    public Customer getCustomerById(Long id);
+    public Customer getCustomerById(long id);
 
 }

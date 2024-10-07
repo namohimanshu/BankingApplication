@@ -30,4 +30,10 @@ public class CustomerServiceImpl implements CustomerService{
       //  Customer customer =customerRepo.findByaccount_num;
         return null;
     }
+
+    @Override
+    public Customer getCustomerById(long id) {
+         Customer customer=customerRepo.findById(id).get();
+         return customer;
+    }
 }
