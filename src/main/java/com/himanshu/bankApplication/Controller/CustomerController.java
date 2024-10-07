@@ -29,6 +29,11 @@ private CustomerService customerService;
         Customer customer1=customerService.addCustomer(customer);
         return new ResponseEntity<Customer>(customer1,HttpStatus.CREATED);
     }
+    @GetMapping("/accountNum/{account_num}")
+    public ResponseEntity<Customer> getCustomerByAccount (@PathVariable long account_num){
+        Customer customer=customerService.getCustomerByAccountNum(account_num);
+        return new ResponseEntity<Customer>(customer,HttpStatus.ACCEPTED);
+    }
 
 
 
