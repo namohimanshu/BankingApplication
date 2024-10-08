@@ -6,12 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Component
+public class BusinessException extends RuntimeException{
 
-public class BusinessException extends Exception{
 
     private String errorCode;
     private String errorMessage;
