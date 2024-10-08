@@ -14,6 +14,6 @@ public interface CustomerService {
     //
     public Customer getCustomerByAccountNum (long Account_num);
     public Customer getCustomerById(long id);
-    public  List<Customer> getByName(String name);
+    public  List<Customer> getByName(String name) throws Exception;
 
 }
