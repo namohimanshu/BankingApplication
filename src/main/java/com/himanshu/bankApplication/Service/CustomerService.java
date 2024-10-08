@@ -1,10 +1,10 @@
 package com.himanshu.bankApplication.Service;
 
 import com.himanshu.bankApplication.Model.Customer;
-import jakarta.persistence.Id;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public interface CustomerService {
@@ -13,7 +13,9 @@ public interface CustomerService {
     public  Customer addCustomer(Customer customer);
     //
     public Customer getCustomerByAccountNum (long Account_num);
-    public Customer getCustomerById(long id);
-    public  List<Customer> getByName(String name) throws Exception;
+    public Optional<Customer> getCustomerById(long id);
+    public  List<Customer> getByName(String name);
+
+    public String deleteCustomerById(long customerId);
 
 }

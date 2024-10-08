@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class ControllerException extends Exception{
+public class ControllerException extends Exception {
 
     private String errorCode;
     private String errorMessage;
