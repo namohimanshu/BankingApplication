@@ -105,4 +105,10 @@ public class CustomerServiceImpl implements CustomerService{
            throw new CustomException("customer Not Found");
        }
     }
+
+    @Override
+    public List<Customer> getByName(String name) {
+        List<Customer> customerList=customerRepo.findByName(name);
+        return customerList;
+    }
 }

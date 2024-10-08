@@ -13,9 +13,14 @@ public interface CustomerService {
     public  Customer addCustomer(Customer customer);
     //
     public Customer getCustomerByAccountNum (long Account_num);
+
     public Optional<Customer> getCustomerById(long id);
     public  List<Customer> getByName(String name);
 
     public String deleteCustomerById(long customerId);
+
+    public Customer getCustomerById(long id);
+    public  List<Customer> getByName(String name);
+
 
 }

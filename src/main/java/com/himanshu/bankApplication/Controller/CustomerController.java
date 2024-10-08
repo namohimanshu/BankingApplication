@@ -83,6 +83,7 @@ private CustomerService customerService;
         return new ResponseEntity<List<Customer>>(customers,HttpStatus.ACCEPTED);
     }
 
+
     @GetMapping("/Id/{id}")
     public ResponseEntity<Optional<Customer>> getById(@PathVariable long id){
 
@@ -95,6 +96,12 @@ private CustomerService customerService;
        customerService.deleteCustomerById(id);
        String c=new String("deleted");
         return new ResponseEntity<>(c,HttpStatus.OK);
+
+    @GetMapping("/{name}")
+    public ResponseEntity<List<Customer>> getCustomerByName (@PathVariable String name){
+        List<Customer> customers=customerService.getByName(name);
+        return new ResponseEntity<List<Customer>>(customers,HttpStatus.ACCEPTED);
+
     }
 
 
