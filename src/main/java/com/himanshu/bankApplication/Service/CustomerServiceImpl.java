@@ -106,9 +106,9 @@ public class CustomerServiceImpl implements CustomerService{
        }
     }
 
-    @Override
-    public List<Customer> getByName(String name) {
-        List<Customer> customerList=customerRepo.findByName(name);
-        return customerList;
-    }
+//    @Override
+//    public List<Customer> getByName(String name) {
+//        List<Customer> customerList=customerRepo.findByName(name);
+//        return customerList;
+//    }
 }

@@ -15,8 +15,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @JsonIgnoreProperties({"cause", "stackTrace", "suppressed", "message", "localizedMessage"})
 public class BusinessException extends RuntimeException {
-
-
     private String errorCode;
     private String errorMessage;
 public BusinessException(){
@@ -52,7 +50,4 @@ public BusinessException(){
 //     return
 //this.getSuppressed();
 //}
-
-
-
 }
