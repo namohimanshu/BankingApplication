@@ -6,6 +6,7 @@ import com.himanshu.bankApplication.exceptions.BusinessException;
 import com.himanshu.bankApplication.exceptions.ControllerException;
 import com.himanshu.bankApplication.exceptions.CustomException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -90,19 +91,23 @@ private CustomerService customerService;
        Optional<Customer> c=customerService.getCustomerById(id);
             return new ResponseEntity<>(c,HttpStatus.OK);
     }
+
     @DeleteMapping ("/Id/{id}")
-    public ResponseEntity<String> deleteById(@PathVariable long id){
+    public ResponseEntity<String> deleteById(@PathVariable long id) {
 
-       customerService.deleteCustomerById(id);
-       String c=new String("deleted");
-        return new ResponseEntity<>(c,HttpStatus.OK);
-
-    @GetMapping("/{name}")
-    public ResponseEntity<List<Customer>> getCustomerByName (@PathVariable String name){
-        List<Customer> customers=customerService.getByName(name);
-        return new ResponseEntity<List<Customer>>(customers,HttpStatus.ACCEPTED);
-
+        customerService.deleteCustomerById(id);
+        String c = new String("deleted");
+        return new ResponseEntity<>(c, HttpStatus.OK);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @RequestParam Long customerId){
+        return new ResponseEntity<>(customerService.updateCustomer(customer,customerId),HttpStatus.OK);
+    }
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteCustomerByAccountNum(@RequestParam("accountNum") long accountNum){
+        String msg=customerService.deleteCustomerByAccountNum(accountNum);
+        return new ResponseEntity<String>(msg,HttpStatus.ACCEPTED);
+    }
 
 }

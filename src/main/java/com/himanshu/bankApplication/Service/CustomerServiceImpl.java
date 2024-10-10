@@ -6,6 +6,7 @@ import com.himanshu.bankApplication.exceptions.BusinessException;
 import com.himanshu.bankApplication.exceptions.CustomException;
 import com.himanshu.bankApplication.exceptions.customerWithNameNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -95,15 +96,31 @@ public class CustomerServiceImpl implements CustomerService{
         return "deleted";
     }
 
+    @Override
+    public Customer updateCustomer(Customer customer, Long customerId) {
+        Customer customer1 = customerRepo.findById(customerId).orElseThrow(() ->new CustomException("customer not fount : "+customerId));
+        customer1.setName(customer.getName());
+        customer1.setGender(customer.getGender());
+        return customerRepo.save(customer1);
+    }
+
+    @Override
+    public String deleteCustomerByAccountNum(long accountNum) {
+       Customer customer =getCustomerByAccountNum(accountNum);
+       long customerId=customer.getCustomerId();
+       getCustomerById(customerId);
+       customerRepo.deleteById(customerId);
+       return "deleted successfully customer . AccountNum : "+accountNum;
+
+    }
+
     public Optional<Customer> getCustomerById(long id)  {
       Optional<Customer> c=  customerRepo.findById(id);
        if (c.isPresent()){
            return c ;
        }
        else {
-           throw new CustomException("customer Not Found");
+           throw new CustomException("customer Not Found "+id  );
        }
     }
-
-
 }
