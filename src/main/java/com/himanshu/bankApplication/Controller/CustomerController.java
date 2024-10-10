@@ -47,7 +47,7 @@ private CustomerService customerService;
         return new ResponseEntity<String>("Test", HttpStatus.OK);
     }
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomer() throws BusinessException {
+    public ResponseEntity<List<Customer>> getAllCustomer()  {
         List<Customer>customers=customerService.getAllCustomer();
         return new ResponseEntity<>(customers,HttpStatus.OK);
     }

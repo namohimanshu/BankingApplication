@@ -27,8 +27,8 @@ public class GlobalExceptionHandling {
 public ResponseEntity<Object> IdForDeleteNotFound(BusinessException b){
         BusinessException b1=new BusinessException();
 
-        b1.setErrorCode("120");
-        b1.setErrorMessage("Id not found");
+        b1.setErrorCode("101");
+        b1.setErrorMessage("No customer found");
 
         HashMap<String, Object> map = new HashMap<>();
         map.put("ErrorCode",120);
