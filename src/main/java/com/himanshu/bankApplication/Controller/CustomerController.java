@@ -104,4 +104,10 @@ private CustomerService customerService;
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @RequestParam Long customerId){
         return new ResponseEntity<>(customerService.updateCustomer(customer,customerId),HttpStatus.OK);
     }
+    @DeleteMapping("/delete")
+    public ResponseEntity<String> deleteCustomerByAccountNum(@RequestParam("accountNum") long accountNum){
+        String msg=customerService.deleteCustomerByAccountNum(accountNum);
+        return new ResponseEntity<String>(msg,HttpStatus.ACCEPTED);
+    }
+
 }

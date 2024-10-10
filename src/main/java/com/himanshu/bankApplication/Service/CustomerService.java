@@ -22,4 +22,6 @@ public interface CustomerService {
 
 
     public Customer updateCustomer(com.himanshu.bankApplication.Model.Customer customer, Long customerId);
+
+    public String deleteCustomerByAccountNum(long accountNum);
 }

@@ -104,13 +104,23 @@ public class CustomerServiceImpl implements CustomerService{
         return customerRepo.save(customer1);
     }
 
+    @Override
+    public String deleteCustomerByAccountNum(long accountNum) {
+       Customer customer =getCustomerByAccountNum(accountNum);
+       long customerId=customer.getCustomerId();
+       getCustomerById(customerId);
+       customerRepo.deleteById(customerId);
+       return "deleted successfully customer . AccountNum : "+accountNum;
+
+    }
+
     public Optional<Customer> getCustomerById(long id)  {
       Optional<Customer> c=  customerRepo.findById(id);
        if (c.isPresent()){
            return c ;
        }
        else {
-           throw new CustomException("customer Not Found");
+           throw new CustomException("customer Not Found "+id  );
        }
     }
 }
