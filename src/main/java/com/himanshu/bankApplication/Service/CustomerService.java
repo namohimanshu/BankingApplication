@@ -19,8 +19,8 @@ public interface CustomerService {
 
     public String deleteCustomerById(long customerId);
 
-    public Customer getCustomerById(long id);
-    public  List<Customer> getByName(String name);
+
+
 
 
 }
