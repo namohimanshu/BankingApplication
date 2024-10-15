@@ -14,7 +14,4 @@ public class ControllerException extends Exception {
 
     private String errorCode;
     private String errorMessage;
-
-
-
 }

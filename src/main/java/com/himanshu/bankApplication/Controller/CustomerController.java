@@ -42,15 +42,20 @@ private CustomerService customerService;
 //
 //    }
 
+    //just for testing the application
     @GetMapping("test")
     public ResponseEntity<String> msg(){
         return new ResponseEntity<String>("Test", HttpStatus.OK);
     }
+
+    //To get List of all the customer
     @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomer()  {
         List<Customer>customers=customerService.getAllCustomer();
         return new ResponseEntity<>(customers,HttpStatus.OK);
     }
+
+    //To add a customer in the List of All the customers
     @PostMapping
     public ResponseEntity<?>addCustomer(@RequestBody Customer customer){
         try{
@@ -64,6 +69,8 @@ private CustomerService customerService;
             return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
         }
     }
+
+    //Getting the details of customer by their account number
     @GetMapping("/accountNum/{account_num}")
     public ResponseEntity<?> getCustomerByAccount (@PathVariable long account_num){
         try{
@@ -78,6 +85,8 @@ private CustomerService customerService;
             return new ResponseEntity<ControllerException>(ce,HttpStatus.BAD_REQUEST);
         }
     }
+
+    //Getting the detail of customer by their name
     @GetMapping("/{name}")
     public ResponseEntity<List<Customer>> getCustomerByName (@PathVariable String name) {
         List<Customer> customers=customerService.getByName(name);
@@ -85,6 +94,7 @@ private CustomerService customerService;
     }
 
 
+    //getting the customer by their unique id
     @GetMapping("/Id/{id}")
     public ResponseEntity<Optional<Customer>> getById(@PathVariable long id){
 
@@ -92,6 +102,7 @@ private CustomerService customerService;
             return new ResponseEntity<>(c,HttpStatus.OK);
     }
 
+    //Deleting the customer by their unique id
     @DeleteMapping ("/Id/{id}")
     public ResponseEntity<String> deleteById(@PathVariable long id) {
 
@@ -100,10 +111,13 @@ private CustomerService customerService;
         return new ResponseEntity<>(c, HttpStatus.OK);
     }
 
+    //updating the details of customer
     @PutMapping("/update")
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer, @RequestParam Long customerId){
         return new ResponseEntity<>(customerService.updateCustomer(customer,customerId),HttpStatus.OK);
     }
+
+    //delete the customer by account number
     @DeleteMapping("/delete")
     public ResponseEntity<String> deleteCustomerByAccountNum(@RequestParam("accountNum") long accountNum){
         String msg=customerService.deleteCustomerByAccountNum(accountNum);

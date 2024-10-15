@@ -1,10 +1,15 @@
 package com.himanshu.bankApplication.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@Data
+@AllArgsConstructor
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,62 +34,6 @@ public class Customer {
 //		this.account_num = account_num;
 //	}
 
-	public Customer(long customerId, String name, String gender, long accountNum, List<Address> address) {
-		this.customerId = customerId;
-		this.name = name;
-		this.gender = gender;
-		this.accountNum = accountNum;
-		this.address = address;
-	}
-
-	public long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
-	public long getAccountNum() {
-		return accountNum;
-	}
-
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Customer{" +
-				"customerId=" + customerId +
-				", name='" + name + '\'' +
-				", gender='" + gender + '\'' +
-				", account_num=" + accountNum +
-				", address=" + address +
-				'}';
-	}
 }
 
 

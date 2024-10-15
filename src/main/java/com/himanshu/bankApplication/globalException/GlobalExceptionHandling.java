@@ -15,26 +15,28 @@ import java.util.HashMap;
 public class GlobalExceptionHandling {
 
     @ExceptionHandler(CustomException.class)
-    public ResponseEntity<Object> NoFoundException(CustomException c){
+    public ResponseEntity<Object> NoFoundException(CustomException c) {
         return new ResponseEntity<>(c.getMessage(), HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(customerWithNameNotFound.class)
-    public ResponseEntity<Object> NameNotFoundException(customerWithNameNotFound c){
+    public ResponseEntity<Object> NameNotFoundException(customerWithNameNotFound c) {
 
         return new ResponseEntity<>(c.getMessage(), HttpStatus.NOT_FOUND);
     }
+
     @ExceptionHandler(BusinessException.class)
-public ResponseEntity<Object> IdForDeleteNotFound(BusinessException b){
-        BusinessException b1=new BusinessException();
+    public ResponseEntity<Object> IdForDeleteNotFound(BusinessException b) {
+        BusinessException b1 = new BusinessException();
 
         b1.setErrorCode("101");
         b1.setErrorMessage("No customer found");
 
         HashMap<String, Object> map = new HashMap<>();
-        map.put("ErrorCode",120);
-        map.put("ErrorMessage","customer with id not found");
-   //     return new ResponseEntity<Object>(b1.getErrorMessage(),HttpStatus.NOT_FOUND);
-      return new ResponseEntity<Object>(b1,HttpStatus.NOT_FOUND);
+        map.put("ErrorCode", 120);
+        map.put("ErrorMessage", "customer with id not found");
+        //     return new ResponseEntity<Object>(b1.getErrorMessage(),HttpStatus.NOT_FOUND);
+        return new ResponseEntity<Object>(b1, HttpStatus.NOT_FOUND);
 //        return new ResponseEntity<Object>(map,HttpStatus.NOT_FOUND);
 //        return new ResponseEntity<Object>("not Found ",HttpStatus.NOT_FOUND);
 //
